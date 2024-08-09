@@ -12,25 +12,29 @@ pricing_rules = [pricing_rule1, pricing_rule2, pricing_rule3]
 
 checkout = Checkout.new(pricing_rules)
 
-item = Item.new('C', 20)
+item_a = Item.new('A', 50)
+item_b = Item.new('B', 30)
+item_c = Item.new('C', 20)
+
+item = item_c
 checkout.scan(item)
 
-item = Item.new('B', 30)
+item = item_b
 checkout.scan(item)
 
-item = Item.new('A', 50)
+item = item_a
 checkout.scan(item)
 
-item = Item.new('A', 50)
+item = item_a
 checkout.scan(item)
 
-item = Item.new('C', 20)
+item = item_c
 checkout.scan(item)
 
-item = Item.new('B', 30)
+item = item_b
 checkout.scan(item)
 
-item = Item.new('C', 20)
+item = item_c
 checkout.scan(item)
 
 price = checkout.total
