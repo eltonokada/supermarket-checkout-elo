@@ -10,14 +10,15 @@ class TotalCalculator
   end
 
   def calculate_total
+    total = 0
+
     begin
-      total = 0
       @items.group_by(&:title).each do |title, items|
-        total += calculate_with_rules(title, items)
+        total += calculate_item_total(title, items)
       end
       apply_total_discount(total)
     rescue => e
-      raise raise TotalCalculatorError.new("An error occurred while calculating the total: #{e.message}")
+      raise TotalCalculatorError.new("An error occurred while calculating the total: #{e.message}")
     end
   end
 
@@ -27,9 +28,13 @@ class TotalCalculator
     @pricing_rules.select { |rule| rule.item_title == title }
   end
 
-  def calculate_with_rules(title, items)
-    return applicable_rules(title).sum { |rule| rule.apply_rule(items.map(&:price)) } if applicable_rules(title).any?
-    items.map(&:price).sum
+  def calculate_item_total(title, items)
+    rules = applicable_rules(title)
+    if rules.any?
+      rules.sum { |rule| rule.apply_rule(items.map(&:price)) }
+    else
+      items.sum(&:price)
+    end
   end
 
   def apply_total_discount(total)
