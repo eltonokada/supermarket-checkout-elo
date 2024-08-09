@@ -16,5 +16,8 @@ class Checkout
     TotalCalculator.new(@items, @pricing_rules).calculate_total
   end
 
-end
+  def clear
+    @items = []
+  end
 
+end
