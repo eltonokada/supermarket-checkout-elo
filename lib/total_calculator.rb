@@ -1,4 +1,7 @@
 class TotalCalculator
+
+  class TotalCalculatorError < StandardError; end
+
   attr_accessor :items, :pricing_rules
   
   def initialize(items, pricing_rules)
@@ -7,11 +10,15 @@ class TotalCalculator
   end
 
   def calculate_total
-    total = 0
-    @items.group_by(&:title).each do |title, items|
-      total += calculate_with_rules(title, items)
+    begin
+      total = 0
+      @items.group_by(&:title).each do |title, items|
+        total += calculate_with_rules(title, items)
+      end
+      apply_total_discount(total)
+    rescue => e
+      raise raise TotalCalculatorError.new("An error occurred while calculating the total: #{e.message}")
     end
-    apply_total_discount(total)
   end
 
   private

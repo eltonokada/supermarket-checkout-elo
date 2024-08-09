@@ -53,7 +53,7 @@ puts "Checkout Total: #{checkout.total}"
 
 checkout.clear
 
-puts "Example 3 from readme file: B,A,B,B,A Should return 189"
+puts "Example 3 from readme file: C,B,A,A,C,B,C Should return 189"
 
 item = item_c
 checkout.scan(item)
