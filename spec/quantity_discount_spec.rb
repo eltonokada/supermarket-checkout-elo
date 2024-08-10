@@ -13,9 +13,9 @@ describe QuantityDiscount do
       quantity_discount = QuantityDiscount.new('A', 2, 10)
       expect(quantity_discount.num_items).to eq(2)
     end
-    it 'should have a discount_price attribute' do
+    it 'should have a discount attribute' do
       quantity_discount = QuantityDiscount.new('A', 2, 10)
-      expect(quantity_discount.discount_price).to eq(10)
+      expect(quantity_discount.discount).to eq(10)
     end
   end
   describe '#apply_rule' do
