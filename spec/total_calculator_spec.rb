@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/total_calculator'
 
 describe TotalCalculator do
@@ -34,5 +36,4 @@ describe TotalCalculator do
       expect(checkout.total).to eq(90)
     end
   end
-
 end

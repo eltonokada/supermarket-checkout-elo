@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require './lib/total_calculator'
 
+# Checkout class is responsible for scanning items and calculating the total.
 class Checkout
   attr_accessor :items, :pricing_rules
 
@@ -19,5 +22,4 @@ class Checkout
   def clear
     @items = []
   end
-
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require './lib/checkout'
 
 describe Checkout do
-
   describe '#initialize' do
     it 'should have an items attribute that is an array' do
       pricing_rules = []
@@ -24,5 +25,4 @@ describe Checkout do
       expect(checkout.items).to eq([item])
     end
   end
-
 end

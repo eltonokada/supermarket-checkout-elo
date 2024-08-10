@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/total_discount'
 
 describe TotalDiscount do
@@ -17,6 +19,6 @@ describe TotalDiscount do
       total_discount = TotalDiscount.new(10, 200)
       items = [50, 50, 50, 60]
       expect(total_discount.apply_rule(items.sum)).to eq(189)
-    end    
+    end
   end
 end

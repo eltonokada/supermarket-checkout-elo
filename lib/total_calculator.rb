@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
+# TotalCalculator class is responsible for calculating the total price of the items in the cart.
 class TotalCalculator
-
   class TotalCalculatorError < StandardError; end
-
   attr_accessor :items, :pricing_rules
-  
+
   def initialize(items, pricing_rules)
     @items = items
     @pricing_rules = pricing_rules
@@ -17,8 +18,8 @@ class TotalCalculator
         total += calculate_item_total(title, items)
       end
       apply_total_discount(total)
-    rescue => e
-      raise TotalCalculatorError.new("An error occurred while calculating the total: #{e.message}")
+    rescue TotalCalculatorError => e
+      raise TotalCalculatorError, "An error occurred while calculating the total: #{e.message}"
     end
   end
 
